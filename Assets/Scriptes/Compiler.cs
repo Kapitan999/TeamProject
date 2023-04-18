@@ -6,7 +6,6 @@ public class Compiler : MonoBehaviour
 {
     Button Run_button;
     Text codeText;
-    string code;
     void Start()
     {
         codeText = gameObject.transform.GetChild(1).GetComponent<Text>();
@@ -23,10 +22,47 @@ public class Compiler : MonoBehaviour
 
     void Run()
     {
-        code = codeText.text;
-        if(code == "move_forvard()")
+        
+
+        //Not worked
+        char[] separators = new char[]
         {
-            HeroKnight.instance.Test();
+            ' ', ';'
+        };
+        //
+
+        //string code = codeText.text;
+
+        string[] code_Array = codeText.text.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+
+        Debug.Log(code_Array.Length);
+
+        for(int i = 0; i < code_Array.Length; i++)
+        {
+            //Debug.Log(code_Array[0]);
+            
         }
+
+        if (code_Array[0] == "move_right()")
+        {
+            HeroKnight.instance.Move_Right();
+            Debug.Log("right");
+        }
+
+        foreach (var codeName in code_Array)
+        {
+            if (codeName == "move_right()")
+            {
+                HeroKnight.instance.Move_Right();
+                Debug.Log("right");
+            }
+            else if (codeName == "move_left()")
+            {
+                Debug.Log("Left");
+                HeroKnight.instance.Move_Left();
+            }
+        }
+
+        
     }
 }
