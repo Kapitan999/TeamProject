@@ -6,6 +6,7 @@ public class Compiler : MonoBehaviour
 {
     Button Run_button;
     Text codeText;
+    public GameObject Object;
     void Start()
     {
         codeText = gameObject.transform.GetChild(1).GetComponent<Text>();
@@ -22,7 +23,7 @@ public class Compiler : MonoBehaviour
 
     void Run()
     {
-        
+        Object.transform.position = new Vector3(-8.081f, -2.682f, 0);
 
         //Not worked
         char[] separators = new char[]
@@ -31,35 +32,50 @@ public class Compiler : MonoBehaviour
         };
         //
 
-        //string code = codeText.text;
+        string code = codeText.text;
 
-        string[] code_Array = codeText.text.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+        string[] code_Array = code.Split();
 
-        Debug.Log(code_Array.Length);
+        //Debug.Log(code_Array.Length);
 
-        for(int i = 0; i < code_Array.Length; i++)
+
+        for(int i = 0; i < code_Array.Length - 1; i++)
         {
-            //Debug.Log(code_Array[0]);
-            
-        }
-
-        if (code_Array[0] == "move_right()")
-        {
-            HeroKnight.instance.Move_Right();
-            Debug.Log("right");
-        }
-
-        foreach (var codeName in code_Array)
-        {
-            if (codeName == "move_right()")
+            if (code_Array[i] == "move_right")
             {
-                HeroKnight.instance.Move_Right();
-                Debug.Log("right");
+                string StrRep = code_Array[i + 1];
+                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                for(int j = 0; j < Rep; j++)
+                    HeroKnight.instance.Move_Right();
+                i += 1;
+               //Debug.Log("right");
             }
-            else if (codeName == "move_left()")
+            else if (code_Array[i] == "move_left")
             {
-                Debug.Log("Left");
-                HeroKnight.instance.Move_Left();
+                string StrRep = code_Array[i + 1];
+                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                for (int j = 0; j < Rep; j++)
+                    HeroKnight.instance.Move_Left();
+                i += 1;
+                //Debug.Log("left");   
+            }
+            else if (code_Array[i] == "move_up")
+            {
+                string StrRep = code_Array[i + 1];
+                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                for (int j = 0; j < Rep; j++)
+                    HeroKnight.instance.Move_Up();
+                i += 1;
+                //Debug.Log("Up");   
+            }
+            else if (code_Array[i] == "move_down")
+            {
+                string StrRep = code_Array[i + 1];
+                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                for (int j = 0; j < Rep; j++)
+                    HeroKnight.instance.Move_Down();
+                i += 1;
+                //Debug.Log("Down");   
             }
         }
 

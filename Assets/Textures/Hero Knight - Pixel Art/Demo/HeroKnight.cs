@@ -6,7 +6,7 @@ public class HeroKnight : MonoBehaviour {
 
     public static HeroKnight instance;
 
-    [SerializeField] float      m_speed = 4.0f;
+    float m_speed = 20f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
@@ -31,14 +31,15 @@ public class HeroKnight : MonoBehaviour {
 
 
     private float inputX = 0;
+    private float inputY = 0;
 
     void Start ()
     {
         instance = this;
-
+        gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
-        m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
+       // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
@@ -61,18 +62,18 @@ public class HeroKnight : MonoBehaviour {
             m_rolling = false;
 
         //Check if character just landed on the ground
-        if (!m_grounded && m_groundSensor.State())
-        {
-            m_grounded = true;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
+       // if (!m_grounded && m_groundSensor.State())
+      //  {
+      //      m_grounded = true;
+       //     m_animator.SetBool("Grounded", m_grounded);
+      //  }
 
         //Check if character just started falling
-        if (m_grounded && !m_groundSensor.State())
-        {
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
+        //if (m_grounded && !m_groundSensor.State())
+        //{
+         //   m_grounded = false;
+          //  m_animator.SetBool("Grounded", m_grounded);
+      //  }
 
         // -- Handle input and movement 
         
@@ -91,7 +92,7 @@ public class HeroKnight : MonoBehaviour {
 
 
         //Set AirSpeed in animator
-        m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
+        //m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         // -- Handle Animations --
         //Wall Slide
@@ -99,7 +100,7 @@ public class HeroKnight : MonoBehaviour {
         m_animator.SetBool("WallSlide", m_isWallSliding);
 
         //Death
-        if (Input.GetKeyDown("e") && !m_rolling)
+        if (Input.GetKeyDown("{") && !m_rolling)
         {
             m_animator.SetBool("noBlood", m_noBlood);
             m_animator.SetTrigger("Death");
@@ -110,24 +111,24 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetTrigger("Hurt");
 
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
-        {
-            m_currentAttack++;
+        //else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+       // {
+       //     m_currentAttack++;
 
             // Loop back to one after third attack
-            if (m_currentAttack > 3)
-                m_currentAttack = 1;
+       //     if (m_currentAttack > 3)
+          //      m_currentAttack = 1;
 
             // Reset Attack combo if time since last attack is too large
-            if (m_timeSinceAttack > 1.0f)
-                m_currentAttack = 1;
+        //    if (m_timeSinceAttack > 1.0f)
+       //         m_currentAttack = 1;
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
-            m_animator.SetTrigger("Attack" + m_currentAttack);
+       //     m_animator.SetTrigger("Attack" + m_currentAttack);
 
             // Reset timer
-            m_timeSinceAttack = 0.0f;
-        }
+       //     m_timeSinceAttack = 0.0f;
+      //  }
 
         // Block
         else if (Input.GetMouseButtonDown(1) && !m_rolling)
@@ -149,14 +150,14 @@ public class HeroKnight : MonoBehaviour {
             
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
-        {
-            m_animator.SetTrigger("Jump");
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-            m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
-            m_groundSensor.Disable(0.2f);
-        }
+       // else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+      //  {
+     //       m_animator.SetTrigger("Jump");
+     //       m_grounded = false;
+     //       m_animator.SetBool("Grounded", m_grounded);
+       //     m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
+       //     m_groundSensor.Disable(0.2f);
+      //  }
 
         //Run
      //   else if (Mathf.Abs(inputX) > Mathf.Epsilon)
@@ -198,15 +199,63 @@ public class HeroKnight : MonoBehaviour {
 
     public void Move_Right()
     {
-        inputX = 1;
+        inputX = 1000f;
+        inputY = 0;
         if (!m_rolling)
-            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y); 
+        {
+            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
+            transform.position = transform.position + movement;
+            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+            //Debug.Log("right");  
+        }
+
+
     }
 
     public void Move_Left()
     {
-        inputX = -1;
+        inputX = -1000f;
+        inputY = 0;
         if (!m_rolling)
-            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        {
+            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
+            transform.position = transform.position + movement;
+        }
+            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //Debug.Log("left");
     }
+
+
+    public void Move_Up()
+    {
+        inputX = 0;
+        inputY = 10f;
+        if (!m_rolling)
+        {
+            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
+            transform.position = transform.position + movement;
+            Debug.Log(gameObject.transform.position.y);
+            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+            //Debug.Log("right");  
+        }
+
+
+    }
+
+
+    public void Move_Down()
+    {
+        inputX = 0;
+        inputY = -10f;
+        if (!m_rolling)
+        {
+            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
+            transform.position = transform.position + movement;
+            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+            //Debug.Log("right");  
+        }
+
+
+    }
+
 }
