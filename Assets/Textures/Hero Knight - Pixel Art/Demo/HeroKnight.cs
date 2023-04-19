@@ -10,7 +10,7 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
-    [SerializeField] GameObject m_slideDust;
+    public GameObject m_marker;
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
@@ -19,10 +19,20 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorR2;
     private Sensor_HeroKnight   m_wallSensorL1;
     private Sensor_HeroKnight   m_wallSensorL2;
+
+    private Sensor_HeroKnight m_wallSensorLC;
+    private Sensor_HeroKnight m_wallSensorRC;
+    private Sensor_HeroKnight m_wallSensorGC;
+    private Sensor_HeroKnight m_wallSensorUC;
+
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
-    private int                 m_facingDirection = 1;
+
+    private int                 m_facingDirection = 0;
+
+    private int m_facingDirectionY = 0;
+
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
@@ -44,6 +54,11 @@ public class HeroKnight : MonoBehaviour {
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorRC = transform.Find("WallSensor_RC").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorLC = transform.Find("WallSensor_LC").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorUC = transform.Find("WallSensor_UC").GetComponent<Sensor_HeroKnight>();
+        m_wallSensorGC = transform.Find("WallSensor_GC").GetComponent<Sensor_HeroKnight>();
+
     }
 
    
@@ -82,12 +97,27 @@ public class HeroKnight : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+            m_facingDirectionY = 0;
         }
             
         else if (inputX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+            m_facingDirectionY = 0;
+        }
+
+
+        if (inputY > 0)
+        {
+            m_facingDirectionY = 1;
+            m_facingDirection = 0;
+        }
+
+        else if (inputY < 0)
+        {
+            m_facingDirectionY = -1;
+            m_facingDirection = 0;
         }
 
 
@@ -179,32 +209,35 @@ public class HeroKnight : MonoBehaviour {
 
     // Animation Events
     // Called in slide animation.
-    void AE_SlideDust()
+    void Marker()
     {
         Vector3 spawnPosition;
 
         if (m_facingDirection == 1)
-            spawnPosition = m_wallSensorR2.transform.position;
+            spawnPosition = m_wallSensorLC.transform.position;
+        else if(m_facingDirection == -1)
+            spawnPosition = m_wallSensorRC.transform.position;
+        else if (m_facingDirectionY == 1)
+            spawnPosition = m_wallSensorGC.transform.position;
         else
-            spawnPosition = m_wallSensorL2.transform.position;
+            spawnPosition = m_wallSensorUC.transform.position;
 
-        if (m_slideDust != null)
-        {
-            // Set correct arrow spawn position
-            GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation) as GameObject;
+        // Set correct arrow spawn position
+        GameObject marker = Instantiate(m_marker, spawnPosition, gameObject.transform.localRotation) as GameObject;
             // Turn arrow in correct direction
-            dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
-        }
+            marker.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
     }
 
     public void Move_Right()
     {
-        inputX = 1000f;
+        inputX = 10f;
         inputY = 0;
         if (!m_rolling)
         {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
+            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
             transform.position = transform.position + movement;
+            Marker();
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
         }
@@ -214,12 +247,13 @@ public class HeroKnight : MonoBehaviour {
 
     public void Move_Left()
     {
-        inputX = -1000f;
+        inputX = -10f;
         inputY = 0;
         if (!m_rolling)
         {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
+            Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f, Mathf.Floor(inputY * m_speed * Time.deltaTime), 0);
             transform.position = transform.position + movement;
+            Marker();
         }
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         //Debug.Log("left");
@@ -234,7 +268,8 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
             transform.position = transform.position + movement;
-            Debug.Log(gameObject.transform.position.y);
+            Marker();
+            // Debug.Log(gameObject.transform.position.y);
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
         }
@@ -249,8 +284,9 @@ public class HeroKnight : MonoBehaviour {
         inputY = -10f;
         if (!m_rolling)
         {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
+            Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime), Mathf.Floor(inputY * m_speed * Time.deltaTime) + 0.5f, 0);
             transform.position = transform.position + movement;
+            Marker();
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
         }
