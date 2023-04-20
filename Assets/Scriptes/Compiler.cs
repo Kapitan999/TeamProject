@@ -23,7 +23,7 @@ public class Compiler : MonoBehaviour
 
     void Run()
     {
-        Object.transform.position = new Vector3(-8.081f, -2.682f, 0);
+        Object.transform.position = new Vector3(-11.483f, -4.059f, 0);
 
         //Not work
         char[] separators = new char[]
@@ -41,19 +41,39 @@ public class Compiler : MonoBehaviour
 
         for(int i = 0; i < code_Array.Length - 1; i++)
         {
+            int Rep = 0;
             if (code_Array[i] == "move_right")
             {
                 string StrRep = code_Array[i + 1];
-                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                for(int j = 0; j < Rep; j++)
+                if(System.Char.IsDigit(StrRep[2]) == true)
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
+                }
+                else
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                }
+                for (int j = 0; j < Rep; j++)
+                {
                     HeroKnight.instance.Move_Right();
+                //    Debug.Log(Object.transform.position.x);
+                }  
                 i += 1;
                //Debug.Log("right");
             }
             else if (code_Array[i] == "move_left")
             {
                 string StrRep = code_Array[i + 1];
-                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                if (System.Char.IsDigit(StrRep[2]) == true)
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
+                }
+                else
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                }
                 for (int j = 0; j < Rep; j++)
                     HeroKnight.instance.Move_Left();
                 i += 1;
@@ -62,7 +82,15 @@ public class Compiler : MonoBehaviour
             else if (code_Array[i] == "move_up")
             {
                 string StrRep = code_Array[i + 1];
-                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                if (System.Char.IsDigit(StrRep[2]) == true)
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
+                }
+                else
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                }
                 for (int j = 0; j < Rep; j++)
                     HeroKnight.instance.Move_Up();
                 i += 1;
@@ -71,7 +99,15 @@ public class Compiler : MonoBehaviour
             else if (code_Array[i] == "move_down")
             {
                 string StrRep = code_Array[i + 1];
-                int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                if (System.Char.IsDigit(StrRep[2]) == true)
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
+                }
+                else
+                {
+                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+                }
                 for (int j = 0; j < Rep; j++)
                     HeroKnight.instance.Move_Down();
                 i += 1;

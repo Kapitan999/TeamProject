@@ -6,7 +6,7 @@ public class HeroKnight : MonoBehaviour {
 
     public static HeroKnight instance;
 
-    float m_speed = 20f;
+    float m_speed = 2f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
@@ -46,7 +46,7 @@ public class HeroKnight : MonoBehaviour {
     void Start ()
     {
         instance = this;
-        gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
+        gameObject.transform.position = new Vector3(-11.483f, -4.059f, 0);
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
        // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
@@ -137,8 +137,8 @@ public class HeroKnight : MonoBehaviour {
         }
             
         //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
-            m_animator.SetTrigger("Hurt");
+        //else if (Input.GetKeyDown("q") && !m_rolling)
+         //   m_animator.SetTrigger("Hurt");
 
         //Attack
         //else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
@@ -237,7 +237,9 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
             transform.position = transform.position + movement;
-           // Marker();
+           // Debug.Log(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f);
+            //Debug.Log(gameObject.transform.position.x);
+            // Marker();
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
         }
@@ -253,6 +255,7 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f, Mathf.Floor(inputY * m_speed * Time.deltaTime), 0);
             transform.position = transform.position + movement;
+
           //  Marker();
         }
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
