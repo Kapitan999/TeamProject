@@ -9,8 +9,13 @@ public class GameSession : MonoBehaviour
 
     public int LevelComplete => _levelIndex;
     private void Awake() {
-
-        DontDestroyOnLoad(this);
+        var exitSession = GetExistsSession();
+        if (exitSession!=null){
+            Destroy(this);
+        }
+        else{
+            DontDestroyOnLoad(this);
+        }
     }
 
     public void OnLevelComplite(){
@@ -29,4 +34,6 @@ public class GameSession : MonoBehaviour
 
         return null;
     }
+
+    
 }

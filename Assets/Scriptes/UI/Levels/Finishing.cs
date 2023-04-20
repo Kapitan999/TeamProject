@@ -12,6 +12,8 @@ public class Finishing : MonoBehaviour
     
     }
 
+
+    [ContextMenu("Finish")]
     public void OnFinishLevel(){
         _session.OnLevelComplite();
         SceneManager.LoadScene("LevelsWindow");

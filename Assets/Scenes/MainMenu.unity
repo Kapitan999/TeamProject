@@ -403,6 +403,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1017377790}
   - component: {fileID: 1017377791}
+  - component: {fileID: 1017377792}
+  - component: {fileID: 1017377794}
+  - component: {fileID: 1017377793}
   m_Layer: 0
   m_Name: GameSession
   m_TagString: Untagged
@@ -438,6 +441,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelIndex: 1
+--- !u!114 &1017377792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017377789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 715fa435420386b479024b95d334ac2f, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c098578-808b-4eae-b4ed-05db3be142f4
+    m_ActionName: Player/Movement[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eb3ff91b-f67a-4b39-82c6-a627cb94a032
+    m_ActionName: Player/Building[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 621d7d71-aa09-4f64-8581-da9f56180718
+    m_ActionName: Player2dTMP/Moving[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1017377793}
+        m_TargetAssemblyTypeName: CameraInputReader, Assembly-CSharp
+        m_MethodName: Menu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8dcb3ff1-567d-4e33-b4b0-b0ceb8354f5e
+    m_ActionName: Camera/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1017377793}
+        m_TargetAssemblyTypeName: CameraInputReader, Assembly-CSharp
+        m_MethodName: ShowTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8b09f2c0-6365-4822-a219-bc08103795be
+    m_ActionName: Camera/Show[/Keyboard/q]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Camera
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1017377793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017377789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb383ed01e0e044aa1a488bf2afbfa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1017377794}
+--- !u!114 &1017377794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017377789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dfd27be5ac3f94491813c4c3f5ac76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menu: {fileID: 3850157791904732110, guid: 70e9859f104d3ab4ea9ce67ce04b8303, type: 3}
 --- !u!1001 &2240292203379531414
 PrefabInstance:
   m_ObjectHideFlags: 0
