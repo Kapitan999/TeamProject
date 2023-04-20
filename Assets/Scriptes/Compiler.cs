@@ -25,7 +25,7 @@ public class Compiler : MonoBehaviour
     {
         Object.transform.position = new Vector3(-8.081f, -2.682f, 0);
 
-        //Not worked
+        //Not work
         char[] separators = new char[]
         {
             ' ', ';'

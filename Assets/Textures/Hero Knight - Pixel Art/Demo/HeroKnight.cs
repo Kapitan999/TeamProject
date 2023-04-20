@@ -237,7 +237,7 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
             transform.position = transform.position + movement;
-            Marker();
+           // Marker();
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
         }
@@ -253,7 +253,7 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f, Mathf.Floor(inputY * m_speed * Time.deltaTime), 0);
             transform.position = transform.position + movement;
-            Marker();
+          //  Marker();
         }
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         //Debug.Log("left");
@@ -268,7 +268,7 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
             transform.position = transform.position + movement;
-            Marker();
+           // Marker();
             // Debug.Log(gameObject.transform.position.y);
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
@@ -286,7 +286,7 @@ public class HeroKnight : MonoBehaviour {
         {
             Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime), Mathf.Floor(inputY * m_speed * Time.deltaTime) + 0.5f, 0);
             transform.position = transform.position + movement;
-            Marker();
+           // Marker();
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
             //Debug.Log("right");  
         }
