@@ -17,7 +17,6 @@ public class LevelWindow : MonoBehaviour
     private void Awake() {
         canvas = FindObjectOfType<Canvas>();
         session = FindObjectOfType<GameSession>();
-        levels = FindObjectsOfType<LevelWidget>();
         levelComplete = session.LevelComplete;
         
         // System.Array.Reverse(levels);
