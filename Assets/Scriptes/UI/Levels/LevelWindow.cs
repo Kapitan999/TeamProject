@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class LevelWindow : MonoBehaviour
 {
     [SerializeField] private GameObject description;
+    [SerializeField] private GameObject final;
 
 
     private int levelComplete;
@@ -22,10 +23,16 @@ public class LevelWindow : MonoBehaviour
         // System.Array.Reverse(levels);
     }
     private void Start() {
-        for (int i =0; i<session.LevelComplete; i++){
-            levels[i].OnOpen();
+        if (levelComplete<= levels.Length){
+            for (int i =0; i<session.LevelComplete; i++){
+                levels[i].OnOpen();
+            }
+        }
+        else{ 
+            final.SetActive(true);
         }
     }
+        
 
     public void Desselect(){
         for (int i=0; i< levels.Length; i++){

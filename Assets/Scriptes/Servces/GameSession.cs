@@ -11,7 +11,7 @@ public class GameSession : MonoBehaviour
     private void Awake() {
         var exitSession = GetExistsSession();
         if (exitSession!=null){
-            Destroy(this);
+            Destroy(gameObject);
         }
         else{
             DontDestroyOnLoad(this);
