@@ -45,8 +45,8 @@ public class HeroKnight : MonoBehaviour {
 
     void Start ()
     {
-        instance = this;
-        gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
+        // instance = this;
+        // gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
        // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
@@ -61,7 +61,7 @@ public class HeroKnight : MonoBehaviour {
 
     }
 
-   
+
 
     void Update ()
     {
@@ -161,14 +161,14 @@ public class HeroKnight : MonoBehaviour {
       //  }
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
-        {
-            m_animator.SetTrigger("Block");
-            m_animator.SetBool("IdleBlock", true);
-        }
+        // else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        // {
+        //     m_animator.SetTrigger("Block");
+        //     m_animator.SetBool("IdleBlock", true);
+        // }
 
-        else if (Input.GetMouseButtonUp(1))
-            m_animator.SetBool("IdleBlock", false);
+        // else if (Input.GetMouseButtonUp(1))
+        //     m_animator.SetBool("IdleBlock", false);
 
         // Roll
        // else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
@@ -198,13 +198,13 @@ public class HeroKnight : MonoBehaviour {
    //     }
 
         //Idle
-        else
-        {
-            // Prevents flickering transitions to idle
-            m_delayToIdle -= Time.deltaTime;
-                if(m_delayToIdle < 0)
-                    m_animator.SetInteger("AnimState", 0);
-        }
+        // else
+        // {
+        //     // Prevents flickering transitions to idle
+        //     m_delayToIdle -= Time.deltaTime;
+        //         if(m_delayToIdle < 0)
+        //             m_animator.SetInteger("AnimState", 0);
+        // }
     }
 
     // Animation Events
@@ -233,14 +233,15 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 10f;
         inputY = 0;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
-            transform.position = transform.position + movement;
-           // Marker();
-            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-            //Debug.Log("right");  
-        }
+        transform.position = new Vector3(transform.position.x +1, transform.position.y, 0);
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
+        //     transform.position = transform.position + movement;
+        //    // Marker();
+        //     //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //     //Debug.Log("right");  
+        // }
 
 
     }
@@ -249,12 +250,14 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = -10f;
         inputY = 0;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f, Mathf.Floor(inputY * m_speed * Time.deltaTime), 0);
-            transform.position = transform.position + movement;
-          //  Marker();
-        }
+        transform.position = new Vector3(transform.position.x -1, transform.position.y, 0);
+
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f, Mathf.Floor(inputY * m_speed * Time.deltaTime), 0);
+        //     transform.position = transform.position + movement;
+        //   //  Marker();
+        // }
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         //Debug.Log("left");
     }
@@ -264,15 +267,17 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 0;
         inputY = 10f;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
-            transform.position = transform.position + movement;
-           // Marker();
-            // Debug.Log(gameObject.transform.position.y);
-            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-            //Debug.Log("right");  
-        }
+        transform.position = new Vector3(transform.position.x, transform.position.y+1, 0);
+
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
+        //     transform.position = transform.position + movement;
+        //    // Marker();
+        //     // Debug.Log(gameObject.transform.position.y);
+        //     //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //     //Debug.Log("right");  
+        // }
 
 
     }
@@ -282,14 +287,16 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 0;
         inputY = -10f;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime), Mathf.Floor(inputY * m_speed * Time.deltaTime) + 0.5f, 0);
-            transform.position = transform.position + movement;
-           // Marker();
-            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-            //Debug.Log("right");  
-        }
+        transform.position = new Vector3(transform.position.x, transform.position.y-1, 0);
+
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime), Mathf.Floor(inputY * m_speed * Time.deltaTime) + 0.5f, 0);
+        //     transform.position = transform.position + movement;
+        //    // Marker();
+        //     //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //     //Debug.Log("right");  
+        // }
 
 
     }
