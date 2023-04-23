@@ -6,24 +6,28 @@ public class Compiler : MonoBehaviour
 {
     Button Run_button;
     Text codeText;
-    public GameObject Object;
-    void Start()
+    [SerializeField] private GameObject Object;
+
+    private HeroKnight _player;
+    private Transform firstTransform;
+
+    private void Awake() {
+        firstTransform = Object.transform;
+    }
+    
+    private void Start()
     {
+        _player = Object.GetComponent<HeroKnight>();
         codeText = gameObject.transform.GetChild(1).GetComponent<Text>();
         Run_button = gameObject.transform.GetChild(2).GetComponent<Button>();
         Run_button.onClick.AddListener(Run);
     }
 
-    
-    void Update()
-    {
-        
-    }
 
 
-    void Run()
+    public void Run()
     {
-        Object.transform.position = new Vector3(-11.483f, -4.059f, 0);
+        Object.transform.position = firstTransform.transform.position ;
 
         //Not work
         char[] separators = new char[]
@@ -39,81 +43,45 @@ public class Compiler : MonoBehaviour
         //Debug.Log(code_Array.Length);
 
 
-        for(int i = 0; i < code_Array.Length - 1; i++)
-        {
-            int Rep = 0;
-            if (code_Array[i] == "move_right")
-            {
-                string StrRep = code_Array[i + 1];
-                if(System.Char.IsDigit(StrRep[2]) == true)
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
-                }
-                else
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                }
-                for (int j = 0; j < Rep; j++)
-                {
-                    HeroKnight.instance.Move_Right();
-                //    Debug.Log(Object.transform.position.x);
-                }  
-                i += 1;
-               //Debug.Log("right");
-            }
-            else if (code_Array[i] == "move_left")
-            {
-                string StrRep = code_Array[i + 1];
-                if (System.Char.IsDigit(StrRep[2]) == true)
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
-                }
-                else
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                }
-                for (int j = 0; j < Rep; j++)
-                    HeroKnight.instance.Move_Left();
-                i += 1;
-                //Debug.Log("left");   
-            }
-            else if (code_Array[i] == "move_up")
-            {
-                string StrRep = code_Array[i + 1];
-                if (System.Char.IsDigit(StrRep[2]) == true)
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
-                }
-                else
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                }
-                for (int j = 0; j < Rep; j++)
-                    HeroKnight.instance.Move_Up();
-                i += 1;
-                //Debug.Log("Up");   
-            }
-            else if (code_Array[i] == "move_down")
-            {
-                string StrRep = code_Array[i + 1];
-                if (System.Char.IsDigit(StrRep[2]) == true)
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                    Rep = Rep * 10 + (int)System.Char.GetNumericValue(StrRep[2]);
-                }
-                else
-                {
-                    Rep = (int)System.Char.GetNumericValue(StrRep[1]);
-                }
-                for (int j = 0; j < Rep; j++)
-                    HeroKnight.instance.Move_Down();
-                i += 1;
-                //Debug.Log("Down");   
-            }
-        }
+        // for(int i = 0; i < code_Array.Length - 1; i++)
+        // {
+        //     if (code_Array[i] == "move_right")
+        //     {
+        //         string StrRep = code_Array[i + 1];
+        //         int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+        //         for(int j = 0; j < Rep; j++)
+        //             _player.Move_Right();
+        //         i += 1;
+        //        //Debug.Log("right");
+        //     }
+        //     else if (code_Array[i] == "move_left")
+        //     {
+        //         string StrRep = code_Array[i + 1];
+        //         int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+        //         for (int j = 0; j < Rep; j++)
+        //             HeroKnight.instance.Move_Left();
+        //         i += 1;
+        //         //Debug.Log("left");   
+        //     }
+        //     else if (code_Array[i] == "move_up")
+        //     {
+        //         string StrRep = code_Array[i + 1];
+        //         int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+        //         for (int j = 0; j < Rep; j++)
+        //             HeroKnight.instance.Move_Up();
+        //         i += 1;
+        //         //Debug.Log("Up");   
+        //     }
+        //     else if (code_Array[i] == "move_down")
+        //     {
+        //         string StrRep = code_Array[i + 1];
+        //         int Rep = (int)System.Char.GetNumericValue(StrRep[1]);
+        //         for (int j = 0; j < Rep; j++)
+        //             HeroKnight.instance.Move_Down();
+        //         i += 1;
+        //         //Debug.Log("Down");   
+        //     }
+        // }
 
         
     }

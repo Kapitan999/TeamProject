@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    // [SerializeField] private GameObject _options;
-
-    // public void ShowSettings(){
-    //     var window = Resources.Load<GameObject>("");
-    // }
+    [SerializeField] private GameObject Info;   
     private LevelLoader loader;
     private void Awake() {
         loader = FindObjectOfType<LevelLoader>();
@@ -19,8 +15,14 @@ public class Menu : MonoBehaviour
     public void ChangeLevel(){
         loader.LoadLevel("LevelsWindow");
     }
+    public void ShowInfo(){
+        var canvas = FindObjectOfType<Canvas>();
+        Instantiate(Info, canvas.transform);
+
+    }
     public void Exit(){
         loader.LoadLevel("MainMenu");
+        
     }
 
 }

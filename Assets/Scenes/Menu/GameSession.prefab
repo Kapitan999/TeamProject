@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3862124906760173488
+--- !u!1 &5247957142575509447
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3862124906760173491}
-  - component: {fileID: 3862124906760173490}
-  - component: {fileID: 3862124906760171597}
-  - component: {fileID: 3862124906760171599}
-  - component: {fileID: 3862124906760171596}
+  - component: {fileID: 5247957142575509444}
+  - component: {fileID: 5247957142575509445}
+  - component: {fileID: 5247957142575507514}
+  - component: {fileID: 5247957142575507512}
+  - component: {fileID: 5247957142575507515}
   m_Layer: 0
   m_Name: GameSession
   m_TagString: Untagged
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3862124906760173491
+--- !u!4 &5247957142575509444
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3862124906760173488}
+  m_GameObject: {fileID: 5247957142575509447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.016859837, y: 0.20019194, z: -0.031983264}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,26 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3862124906760173490
+--- !u!114 &5247957142575509445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3862124906760173488}
+  m_GameObject: {fileID: 5247957142575509447}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece3fb627cd255e4f813ef36a4914599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _levelIndex: 1
---- !u!114 &3862124906760171597
+--- !u!114 &5247957142575507514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3862124906760173488}
+  m_GameObject: {fileID: 5247957142575509447}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_ActionName: Player2dTMP/Moving[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3862124906760171596}
+      - m_Target: {fileID: 5247957142575507515}
         m_TargetAssemblyTypeName: CameraInputReader, Assembly-CSharp
         m_MethodName: Menu
         m_Mode: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_ActionName: Camera/Menu[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3862124906760171596}
+      - m_Target: {fileID: 5247957142575507515}
         m_TargetAssemblyTypeName: CameraInputReader, Assembly-CSharp
         m_MethodName: ShowTarget
         m_Mode: 0
@@ -122,29 +122,29 @@ MonoBehaviour:
   m_DefaultActionMap: Camera
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3862124906760171599
+--- !u!114 &5247957142575507512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3862124906760173488}
+  m_GameObject: {fileID: 5247957142575509447}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7dfd27be5ac3f94491813c4c3f5ac76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _menu: {fileID: 3850157791904732110, guid: 70e9859f104d3ab4ea9ce67ce04b8303, type: 3}
---- !u!114 &3862124906760171596
+--- !u!114 &5247957142575507515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3862124906760173488}
+  m_GameObject: {fileID: 5247957142575509447}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfb383ed01e0e044aa1a488bf2afbfa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 3862124906760171599}
+  _camera: {fileID: 5247957142575507512}
