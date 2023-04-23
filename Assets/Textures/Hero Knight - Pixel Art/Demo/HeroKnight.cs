@@ -14,16 +14,16 @@ public class HeroKnight : MonoBehaviour {
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
-    private Sensor_HeroKnight   m_groundSensor;
-    private Sensor_HeroKnight   m_wallSensorR1;
-    private Sensor_HeroKnight   m_wallSensorR2;
-    private Sensor_HeroKnight   m_wallSensorL1;
-    private Sensor_HeroKnight   m_wallSensorL2;
+    [SerializeField] private Sensor_HeroKnight   m_groundSensor;
+    [SerializeField] private Sensor_HeroKnight   m_wallSensorR1;
+    [SerializeField] private Sensor_HeroKnight   m_wallSensorR2;
+    [SerializeField] private Sensor_HeroKnight   m_wallSensorL1;
+    [SerializeField] private Sensor_HeroKnight   m_wallSensorL2;
 
-    private Sensor_HeroKnight m_wallSensorLC;
-    private Sensor_HeroKnight m_wallSensorRC;
-    private Sensor_HeroKnight m_wallSensorGC;
-    private Sensor_HeroKnight m_wallSensorUC;
+    [SerializeField] private Sensor_HeroKnight m_wallSensorLC;
+    [SerializeField] private Sensor_HeroKnight m_wallSensorRC;
+    [SerializeField] private Sensor_HeroKnight m_wallSensorGC;
+    [SerializeField] private Sensor_HeroKnight m_wallSensorUC;
 
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
@@ -46,7 +46,8 @@ public class HeroKnight : MonoBehaviour {
     void Start ()
     {
         instance = this;
-        gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
+
+        // gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
        // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
@@ -61,7 +62,7 @@ public class HeroKnight : MonoBehaviour {
 
     }
 
-   
+
 
     void Update ()
     {
@@ -125,20 +126,20 @@ public class HeroKnight : MonoBehaviour {
         //m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         // -- Handle Animations --
-        //Wall Slide
-        m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
-        m_animator.SetBool("WallSlide", m_isWallSliding);
+        // //Wall Slide
+        // m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
+        // m_animator.SetBool("WallSlide", m_isWallSliding);
 
         //Death
-        if (Input.GetKeyDown("{") && !m_rolling)
-        {
-            m_animator.SetBool("noBlood", m_noBlood);
-            m_animator.SetTrigger("Death");
-        }
+        // if (Input.GetKeyDown("{") && !m_rolling)
+        // {
+        //     m_animator.SetBool("noBlood", m_noBlood);
+        //     m_animator.SetTrigger("Death");
+        // }
             
         //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
-            m_animator.SetTrigger("Hurt");
+        // else if (Input.GetKeyDown("q") && !m_rolling)
+        //     m_animator.SetTrigger("Hurt");
 
         //Attack
         //else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
@@ -161,14 +162,14 @@ public class HeroKnight : MonoBehaviour {
       //  }
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
-        {
-            m_animator.SetTrigger("Block");
-            m_animator.SetBool("IdleBlock", true);
-        }
+        // else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        // {
+        //     m_animator.SetTrigger("Block");
+        //     m_animator.SetBool("IdleBlock", true);
+        // }
 
-        else if (Input.GetMouseButtonUp(1))
-            m_animator.SetBool("IdleBlock", false);
+        // else if (Input.GetMouseButtonUp(1))
+        //     m_animator.SetBool("IdleBlock", false);
 
         // Roll
        // else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
@@ -233,14 +234,16 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 10f;
         inputY = 0;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
-            transform.position = transform.position + movement;
-           // Marker();
-            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-            //Debug.Log("right");  
-        }
+
+        transform.position = new Vector3(transform.position.x +1, transform.position.y, 0);
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime - 0.5f) ,0, 0);
+        //     transform.position = transform.position + movement;
+        //    // Marker();
+        //     //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //     //Debug.Log("right");  
+        // }
 
 
     }
@@ -249,12 +252,13 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = -10f;
         inputY = 0;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f, Mathf.Floor(inputY * m_speed * Time.deltaTime), 0);
-            transform.position = transform.position + movement;
-          //  Marker();
-        }
+        transform.position = new Vector3(transform.position.x -1, transform.position.y, 0);
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime) + 0.5f,0, 0);
+        //     transform.position = transform.position + movement;
+        //   //  Marker();
+        // }
             //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         //Debug.Log("left");
     }
@@ -264,15 +268,16 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 0;
         inputY = 10f;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime), Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
-            transform.position = transform.position + movement;
-           // Marker();
-            // Debug.Log(gameObject.transform.position.y);
-            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-            //Debug.Log("right");  
-        }
+        transform.position = new Vector3(transform.position.x, transform.position.y+1, 0);
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(0, Mathf.Ceil(inputY * m_speed * Time.deltaTime) - 0.5f, 0);
+        //     transform.position = transform.position + movement;
+        //    // Marker();
+        //     // Debug.Log(gameObject.transform.position.y);
+        //     //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //     //Debug.Log("right");  
+        // }
 
 
     }
@@ -282,14 +287,15 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 0;
         inputY = -10f;
-        if (!m_rolling)
-        {
-            Vector3 movement = new Vector3(Mathf.Floor(inputX * m_speed * Time.deltaTime), Mathf.Floor(inputY * m_speed * Time.deltaTime) + 0.5f, 0);
-            transform.position = transform.position + movement;
-           // Marker();
-            //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-            //Debug.Log("right");  
-        }
+        transform.position = new Vector3(transform.position.x , transform.position.y -1, 0);
+        // if (!m_rolling)
+        // {
+        //     Vector3 movement = new Vector3(0, Mathf.Floor(inputY * m_speed * Time.deltaTime) + 0.5f, 0);
+        //     transform.position = transform.position + movement;
+        //    // Marker();
+        //     //m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        //     //Debug.Log("right");  
+        // }
 
 
     }
