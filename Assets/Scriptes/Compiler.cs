@@ -32,10 +32,24 @@ public class Compiler : MonoBehaviour
         };
         
 
-        string Enters = ") ";
+        string Enters = "/n";
         //
 
         string code = codeText.text;
+
+        // string[] code_Array = code.Split(separators, System.StringSplitOptions.None);
+
+        
+        // for (int i=0; i<code_Array.Length-1; i+=2){
+            
+        //     if (code_Array[i]=="move_right"){
+        //         int step = System.Int32.Parse(code_Array[i+1]);
+        //         for(int j = 0; j < step; j++)
+        //             HeroKnight.instance.Move_Right();
+        //         // i++;
+        //     }
+        // }
+
 
         string[] code_Array = code.Split(Enters, System.StringSplitOptions.None);
 
@@ -50,7 +64,7 @@ public class Compiler : MonoBehaviour
                 int step = System.Int32.Parse(words[1]);
                 for(int j = 0; j < step; j++)
                     HeroKnight.instance.Move_Right();
-                i++;
+                // i++;
             }
         }
 
