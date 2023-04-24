@@ -45,7 +45,7 @@ public class HeroKnight : MonoBehaviour {
 
     void Start ()
     {
-        // instance = this;
+        instance = this;
         // gameObject.transform.position = new Vector3(-8.081f, -2.682f, 0);
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
@@ -137,8 +137,8 @@ public class HeroKnight : MonoBehaviour {
         }
             
         //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
-            m_animator.SetTrigger("Hurt");
+       // else if (Input.GetKeyDown("q") && !m_rolling)
+      //      m_animator.SetTrigger("Hurt");
 
         //Attack
         //else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
@@ -233,7 +233,7 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 10f;
         inputY = 0;
-        transform.position = new Vector3(transform.position.x +1, transform.position.y, 0);
+        transform.position = new Vector3(transform.position.x + 1, transform.position.y, 0);
         // if (!m_rolling)
         // {
         //     Vector3 movement = new Vector3(Mathf.Ceil(inputX * m_speed * Time.deltaTime) - 0.5f, Mathf.Ceil(inputY * m_speed * Time.deltaTime), 0);
@@ -250,7 +250,7 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = -10f;
         inputY = 0;
-        transform.position = new Vector3(transform.position.x -1, transform.position.y, 0);
+        transform.position = new Vector3(transform.position.x - 1, transform.position.y, 0);
 
         // if (!m_rolling)
         // {
@@ -267,7 +267,7 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 0;
         inputY = 10f;
-        transform.position = new Vector3(transform.position.x, transform.position.y+1, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
 
         // if (!m_rolling)
         // {
@@ -287,7 +287,7 @@ public class HeroKnight : MonoBehaviour {
     {
         inputX = 0;
         inputY = -10f;
-        transform.position = new Vector3(transform.position.x, transform.position.y-1, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 1, 0);
 
         // if (!m_rolling)
         // {
