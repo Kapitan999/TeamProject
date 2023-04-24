@@ -15,10 +15,10 @@ public class GameSession : MonoBehaviour
         //splayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         //finish = GameObject.FindGameObjectWithTag("Finish").GetComponent<Transform>();
 
-        if (player.position == finish.position)
-        {
+       // if (player.position == finish.position)
+      //  {
             
-        }
+      //  }
     }
 
     public int LevelComplete => _levelIndex;
