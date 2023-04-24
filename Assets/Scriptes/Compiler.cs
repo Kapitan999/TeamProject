@@ -103,10 +103,10 @@ public class Compiler : MonoBehaviour
             }
             else
             {
-                errorIndex = i;
-                i += 1;
-                Debug.Log(errorIndex);
-                break;
+              //  errorIndex = i;
+              //  i += 1;
+              //  Debug.Log(errorIndex);
+              //  break;
             }
         }
     }
@@ -198,29 +198,29 @@ public class Compiler : MonoBehaviour
             }
             else
             {
-                errorIndex = 0;
+                //errorIndex = 0;
                 // Debug.Log(errorIndex);
             }
         }    
 
-        string output = "";
-        string ErrorOutput = "";
-        for (int i = 0; i < code_Array.Length; i++)
-        {
-            if(i != errorIndex)
-            {
-                output += code_Array[i];
-                ErrorOutput += " ";
-            }
-            else
-            {
-                output += " ";
-                ErrorOutput += code_Array[i];
-            }
+       // string output = "";
+       // string ErrorOutput = "";
+       // for (int i = 0; i < code_Array.Length; i++)
+       // {
+           // if(i != errorIndex)
+          //  {
+          //      output += code_Array[i];
+          //      ErrorOutput += " ";
+         //   }
+         //   else
+         //   {
+         //       output += " ";
+         //       ErrorOutput += code_Array[i];
+         //   }
             
-        }
-        codeText.text = output;
-        ErrorText.text = ErrorOutput;
+       // }
+      //  codeText.text = output;
+      //  ErrorText.text = ErrorOutput;
        // Debug.Log(ErrorText.text);
       //  Debug.Log(codeText.text);
     }
