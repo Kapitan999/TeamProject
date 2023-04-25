@@ -2273,7 +2273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498675131}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8743496, y: -0.32281542, z: -10.006374}
+  m_LocalPosition: {x: -3.6311316, y: -0.32152534, z: -10.006374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2378,45 +2378,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1903550620116441691, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2010800495314818390, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2010800495712713943, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2010800496811911923, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2010800496847494946, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2010800496895320202, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3247117570091099403, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5486951901794721736, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
       propertyPath: m_Name
       value: HeroKnight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417771906512967759, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795064465234205809, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8008825798195401631, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
       propertyPath: m_RootOrder
@@ -2461,14 +2425,6 @@ PrefabInstance:
     - target: {fileID: 8008825798195401631, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8464010932644153453, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8772323280787472791, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 329fc8dfce2b05049a6a6fdef900e9d1, type: 3}
@@ -11305,7 +11261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776277652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0698357, y: -2.1589055, z: -10.006374}
+  m_LocalPosition: {x: -6.4088764, y: -2.1589055, z: -10.006374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
