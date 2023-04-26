@@ -22,7 +22,7 @@ public class Finishing : MonoBehaviour
         _finish = GameObject.FindGameObjectWithTag("Finish");
         Vector3 tmp = new Vector3 (_finish.transform.position.x, _finish.transform.position.y - 0.5f, 0);
         if (_player.transform.position == tmp){
-            Debug.Log("111");
+            // Debug.Log("111");
 
             _session.OnLevelComplite();
             SceneManager.LoadScene("LevelsWindow");

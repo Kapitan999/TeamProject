@@ -10,16 +10,6 @@ public class GameSession : MonoBehaviour
     private Transform player;
     private Transform finish;
 
-    private void Update()
-    {
-        //splayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        //finish = GameObject.FindGameObjectWithTag("Finish").GetComponent<Transform>();
-
-       // if (player.position == finish.position)
-      //  {
-            
-      //  }
-    }
 
     public int LevelComplete => _levelIndex;
     private void Awake() {
